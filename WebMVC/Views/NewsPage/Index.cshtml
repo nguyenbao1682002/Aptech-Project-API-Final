@@ -1,0 +1,243 @@
+﻿@using Microsoft.AspNetCore.Html;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@model IEnumerable<ObjectBussiness.News>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <!doctype html>
+    <html class="no-js" lang="zxx">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>News</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="site.webmanifest">
+    </head>
+
+    <body>
+        <!--================Blog Area =================-->
+        <section class="blog_area section-padding">
+        <h1 style="text-align: center;
+                        display: flex;
+                        text-shadow: 2px 1px 2px black;
+                        justify-content: center;
+                        height: 100px;">    
+                SECTION: NEWS
+        </h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mb-5 mb-lg-0">
+                        <div class="blog_left_sidebar">
+                            <!--================Blog Item =================-->
+                            @foreach (var item in Model)
+                            {
+                            <article class="blog_item">
+                                <div class="blog_item_img">
+                                    <img class="card-img rounded-0" src="~/images/@item.Picture" alt="">     
+                                    <a href="@Url.Action("Details", "NewsPage", new { id = item.NewsID })" class="blog_item_date">
+                                        <p>Date publish</p>
+                                        <h3><label for="@item.DateSubmitted">@item.DateSubmitted</label></h3>
+                                    </a>
+                                </div>
+
+                                <div class="blog_details">
+                                    <a class="d-inline-block" href="@Url.Action("Details", "NewsPage", new { id = item.NewsID })" )">
+                                        <h2><label for="@item.Title">@item.Title</label></h2>
+                                    </a>
+                                    <p>
+                                        <label for="@item.ShortContents">@item.ShortContents</label>
+                                    </p>
+                                    <ul class="blog-info-link">
+                                        <li><a href="#"><i class="fa fa-user"></i> By: Admin</a></li>
+                                    </ul>
+                                </div>
+                            </article>
+                            }
+                            <!--================Blog Item =================-->
+                        <nav class="blog-pagination justify-content-center d-flex">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <button class="page-link">
+                                        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page = page }))
+                                    </button>
+                                </li>
+                            </ul>
+                        </nav>                       
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog_right_sidebar">
+                            <aside class="single_sidebar_widget search_widget">
+                                <form action="#">
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" placeholder='Search Keyword'
+                                                   onfocus="this.placeholder = ''"
+                                                   onblur="this.placeholder = 'Search Keyword'">
+                                            <div class="input-group-append">
+                                                <button class="btns" type="button"><i class="ti-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                            type="submit">
+                                        Search
+                                    </button>
+                                </form>
+                            </aside>
+
+                        <aside class="single_sidebar_widget post_category_widget">
+                            <h4 class="widget_title">Category</h4>
+                            <ul class="list cat-list">
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>Gasoline and diesel prices</p>
+                                        <p>(10)</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>Fuel prices</p>
+                                        <p>(10)</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>Oil prices</p>
+                                        <p>(03)</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>Job information</p>
+                                        <p>(05)</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>Breaking news</p>
+                                        <p>(03)</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>Fresh news</p>
+                                        <p>(02)</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </aside>
+
+                            <aside class="single_sidebar_widget popular_post_widget">
+                            <h3 class="widget_title">Latest news</h3>
+                                 @foreach (var item in Model)
+                            {
+                                <div class="media post_item">
+                                    <img src="~/images/@item.Picture" alt="post" style="object-fit:cover; height:50px; width:50px">
+                                    <div class="media-body">
+                                        <a href="@Url.Action("Details", "NewsPage", new { id = item.NewsID })">
+                                            <h3><label for="@item.Title">@item.Title</label></h3>
+                                        </a>
+                                        <p><label for="@item.DateSubmitted">@item.DateSubmitted</label></p>
+                                    </div>
+                                </div>
+                            }
+                            @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page = page }))
+                            </aside>
+                            <aside class="single_sidebar_widget tag_cloud_widget">
+                                <h4 class="widget_title">Tag Clouds</h4>
+                            <ul class="list">
+                                <li>
+                                    <a href="#">Oil and gas</a>
+                                </li>
+                                <li>
+                                    <a href="#">Petroleum</a>
+                                </li>
+                                <li>
+                                    <a href="#">Crude oil</a>
+                                </li>
+                                <li>
+                                    <a href="#">Refined oil</a>
+                                </li>
+                                <li>
+                                    <a href="#">Natural gas</a>
+                                </li>
+                                <li>
+                                    <a href="#">Diesel</a>
+                                </li>
+                                <li>
+                                    <a href="#">Lubricants</a>
+                                </li>
+                                <li>
+                                    <a href="#">Heating oil</a>
+                                </li>
+                            </ul>
+                            </aside>
+
+
+                            <aside class="single_sidebar_widget instagram_feeds">
+                            <h4 class="widget_title">Pictures about us</h4>
+                                <ul class="instagram_row flex-wrap">
+                                    <li>
+                                        <a href="#">
+                                        <img class="img-fluid" src="~/assets/img/post/post_5.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                        <img class="img-fluid" src="~/assets/img/post/post_6.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                        <img class="img-fluid" src="~/assets/img/post/post_7.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                        <img class="img-fluid" src="~/assets/img/post/post_8.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                        <img class="img-fluid" src="~/assets/img/post/post_9.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                        <img class="img-fluid" src="~/assets/img/post/post_1.jpg" alt="">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </aside>
+
+
+                            <aside class="single_sidebar_widget newsletter_widget">
+                                <h4 class="widget_title">Newsletter</h4>
+
+                                <form action="#">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" onfocus="this.placeholder = ''"
+                                               onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
+                                    </div>
+                                    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                            type="submit">
+                                        Subscribe
+                                    </button>
+                                </form>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!--================Blog Area =================-->
+       
+    </body>
+    </html>

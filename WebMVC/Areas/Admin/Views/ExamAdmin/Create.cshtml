@@ -1,0 +1,78 @@
+﻿@model ObjectBussiness.Exam
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    List<SelectListItem> selectStatus = new List<SelectListItem>
+    {
+        new SelectListItem{Text = "Start",Value="Start"},
+        new SelectListItem{Text = "End",Value="End"}
+    };
+    List<SelectListItem> selectRound = new List<SelectListItem>
+    {
+        new SelectListItem{Text = "1",Value="1"},
+        new SelectListItem{Text = "2",Value="2"},
+        new SelectListItem{Text = "3",Value="3"}
+    };
+}
+<style>
+    label {
+        color: black;
+    }
+
+    .required {
+        color: red;
+    }
+</style>
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-md-4">
+            <form action="Create" method="post">
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ExamName, new { @class = "control-label" }) <label class="required">*</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ExamName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ExamName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TimeBegin, new { @class = "control-label" }) <label class="required">*</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TimeBegin, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TimeBegin, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TimeEnd, new { @class = "control-label" }) <label class="required">*</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TimeEnd, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TimeEnd, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TimeDelay, new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TimeDelay, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TimeDelay, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" style="color:black;background-color:yellow" class="btn" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div>
+        <a href="~/Admin/ExamAdmin">Back to List</a>
+    </div>
+</div>
+
+@* @section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+ *@

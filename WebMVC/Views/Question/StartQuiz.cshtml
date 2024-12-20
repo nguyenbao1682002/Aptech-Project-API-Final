@@ -1,0 +1,90 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IEnumerable<ObjectBussiness.Question>
+
+@{
+    ViewData["Title"] = "Start Quiz";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (ViewBag.Message == null)
+{
+    <div class="container mt-5">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-10 col-lg-10">
+                @foreach (var item in Model)
+                {
+                    <form action="StartQuiz" method="post">
+                        <div class="border">
+                            <div class="question bg-white p-3 border-bottom">
+                                <div class="d-flex flex-row justify-content-between align-items-center mcq">
+                                    <h4>Quiz</h4><span>(@ViewBag.Count question)</span>
+                                </div>
+                            </div>
+                            <div class="question bg-white p-3 border-bottom">
+                                <div class="d-flex flex-row align-items-center question-title">
+                                    <span class="mt-1 ml-2 text-danger">@item.QuestionName</span>
+                                </div>
+                                <div class="ans ml-2">
+                                    <label class="radio">
+                                        <input type="radio" id="@item.AnswerA" name="@item.QuestionID" value="@item.AnswerA" />
+                                        <label for="@item.AnswerA">@item.AnswerA</label>
+                                        @* <h3>@Html.RadioButtonFor(x => x.AnswerA, new { @class = "form-control" }) @Model.AnswerA</h3> *@
+                                    </label>
+                                </div>
+                                <div class="ans ml-2">
+                                    <label class="radio">
+                                        <input type="radio" id="@item.AnswerB" name="@item.QuestionID" value="@item.AnswerB" />
+                                        <label for="@item.AnswerB">@item.AnswerB</label>
+                                        @* <h3>@Html.RadioButtonFor(x => x.AnswerA, new { @class = "form-control" }) @Model.AnswerA</h3> *@
+                                    </label>
+                                </div>
+                                <div class="ans ml-2">
+                                    <label class="radio">
+                                        <input type="radio" id="@item.AnswerC" name="@item.QuestionID" value="@item.AnswerC" />
+                                        <label for="@item.AnswerC">@item.AnswerC</label>
+                                        @* <h3>@Html.RadioButtonFor(x => x.AnswerA, new { @class = "form-control" }) @Model.AnswerA</h3> *@
+                                    </label>
+                                </div>
+                                <div class="ans ml-2">
+                                    <label class="radio">
+                                        <input type="radio" id="@item.AnswerD" name="@item.QuestionID" value="@item.AnswerD" />
+                                        <label for="@item.AnswerD">@item.AnswerD</label>
+                                        @* <h3>@Html.RadioButtonFor(x => x.AnswerA, new { @class = "form-control" }) @Model.AnswerA</h3> *@
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        @*  @Html.PagedListPager((IPagedList)Model, page => Url.Action("StartQuiz", new { page = page, SearchString = @Context.Request.Query["SearchString"] }),
+                new X.PagedList.Web.Common.PagedListRenderOptions
+                {
+                LiElementClasses = new string[] { "page-item" },
+                PageClasses = new string[] { "page-link " }
+                }) *@
+                        <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-white">
+                            <button class="btn btn-primary border-success align-items-center btn-success">
+                                @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page = page, SearchString = @Context.Request.Query["SearchString"] }),
+                                         new X.PagedList.Web.Common.PagedListRenderOptions
+                        {
+                            LiElementClasses = new string[] { "page-item" },
+                            PageClasses = new string[] { "" }
+                        })
+                            </button>
+                            @* <button class="btn btn-primary border-success align-items-center btn-success">Next</button> *@
+                        </div>
+                        <br />
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <h1 style="color:red;text-align:center">@ViewBag.Message</h1>
+}
+
+@if (TempData["Score"] != null)
+{
+    @TempData["Score"]
+}

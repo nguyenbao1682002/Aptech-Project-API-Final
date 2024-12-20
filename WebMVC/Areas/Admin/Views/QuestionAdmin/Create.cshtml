@@ -1,0 +1,101 @@
+﻿@model ObjectBussiness.Question
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    List<SelectListItem> options = new List<SelectListItem>
+    {
+        new SelectListItem{Text="A",Value="A"},
+        new SelectListItem{Text="B",Value="B"},
+        new SelectListItem{Text="C",Value="C"},
+        new SelectListItem{Text="D",Value="D"}
+    };
+    List<SelectListItem> optionsNone = new List<SelectListItem>
+    {
+    };
+}
+<style>
+    label {
+        color: black
+    }
+</style>
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-md-4">
+            <form action="Create" method="post">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RoundID, new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @if (ViewBag.Items == null)
+                        {
+                            @Html.DropDownListFor(model => model.RoundID, optionsNone, "No created rounds have been created yet", new { @class = "form-control" })
+                        }
+                        else
+                        {
+                            @Html.DropDownListFor(model => model.RoundID, ViewBag.Items as IEnumerable<SelectListItem>, "Choose an item", new { @class = "form-control" })
+                        }
+                        @Html.ValidationMessageFor(model => model.RoundID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.QuestionName, new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.QuestionName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.QuestionName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AnswerA, new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.AnswerA, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AnswerA, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AnswerB, new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.AnswerB, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AnswerB, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AnswerC, new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.AnswerC, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AnswerC, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AnswerD, new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.AnswerD, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AnswerD, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CorrectAnswer, new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.CorrectAnswer, options, "Select an option", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CorrectAnswer, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Note, new { @class = "control-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Note, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" style="color:black;background-color:yellow" class="btn" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a href="~/Admin/QuestionAdmin">Back to List</a>
+    </div>
+</div>

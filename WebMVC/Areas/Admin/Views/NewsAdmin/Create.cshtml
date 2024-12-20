@@ -1,0 +1,100 @@
+﻿@model ObjectBussiness.NewsImage
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<style>
+    label {
+        color: black;
+    }
+</style>
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-md-4">
+            @using (Html.BeginForm("Create", "NewsAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "alert alert-block alert-danger fade in" })
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    @Html.LabelFor(n => n.Title)
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", @placeholder = "Pleate enter title" } })
+
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(n => n.Contents)
+                    @Html.TextAreaFor(model => model.Contents, new { @class = "form-control", id = "summernote" })
+                    @Html.ValidationMessageFor(model => model.Contents, "", new { @class = "text-danger" })
+                </div>
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(n => n.ShortContents)
+                    @Html.EditorFor(model => model.ShortContents, new { htmlAttributes = new { @class = "form-control", @placeholder = "Pleate enter short contents" } })
+                    <span asp-validation-for="ShortContents" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(n => n.ImageFile)
+                    @Html.EditorFor(model => model.ImageFile, new { htmlAttributes = new { @class = "form-control", @placeholder = "Pleate choose image upload" } })
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(n => n.DateSubmitted)
+                    @Html.EditorFor(model => model.DateSubmitted, new { htmlAttributes = new { @class = "form-control", @placeholder = "Pleate enter Date Publish" } })
+                    <span asp-validation-for="DateSubmitted" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="CategoryID" class="control-label">News Category</label>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.CategoryID, ViewBag.Items as IEnumerable<SelectListItem>?? Enumerable.Empty<SelectListItem>(), "Choose an category", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(n => n.AccountID)
+                    @Html.EditorFor(model => model.AccountID, new { htmlAttributes = new { @class = "form-control", @placeholder = "Please enter AccountID", @Value = "1" } })
+                    <span asp-validation-for="AccountID" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Creat" class="btn btn-primary" />
+                </div>
+            }
+        </div>
+    </div>
+    <br />
+
+    <div>
+        @Html.ActionLink("Back To List", "Index", "NewsAdmin", null, new { @class = "btn btn-danger" })
+    </div>
+</div>
+
+
+<!--Kích hoạt phần tử #Content là Editor HTML -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+<script>
+    $('#summernote').summernote({
+        placeholder: 'Enter News content',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+</script>
+

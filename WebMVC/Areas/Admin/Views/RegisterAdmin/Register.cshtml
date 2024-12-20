@@ -1,0 +1,202 @@
+﻿@model ObjectBussiness.ExamRegister
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+
+    List<SelectListItem> optionsNone = new List<SelectListItem>
+    {
+    };
+}
+<style>
+    .register {
+        /* background: -webkit-linear-gradient(left, #3931af, #00c6ff); */
+        /* margin-top: 3%;
+                                                                padding: 3%; */
+    }
+
+    .register-left {
+        text-align: center;
+        color: #fff;
+        margin-top: 4%;
+    }
+
+        .register-left input {
+            border: none;
+            border-radius: 1.5rem;
+            padding: 2%;
+            width: 60%;
+            background: #f8f9fa;
+            font-weight: bold;
+            color: #383d41;
+            margin-top: 30%;
+            margin-bottom: 3%;
+            cursor: pointer;
+        }
+
+    .register-right {
+        /* background: #f8f9fa; */
+        border-top-left-radius: 10% 50%;
+        border-bottom-left-radius: 10% 50%;
+    }
+
+    .register-left img {
+        margin-top: 15%;
+        margin-bottom: 5%;
+        width: 25%;
+        -webkit-animation: mover 2s infinite alternate;
+        animation: mover 1s infinite alternate;
+    }
+
+    .register-left p {
+        font-weight: lighter;
+        padding: 12%;
+        margin-top: -9%;
+    }
+
+    .register .register-form {
+        padding: 10%;
+        margin-top: 10%;
+    }
+
+    .btnRegister {
+        float: right;
+        margin-top: 10%;
+        border: none;
+        border-radius: 1.5rem;
+        padding: 2%;
+        background: #0062cc;
+        color: #fff;
+        font-weight: 600;
+        width: 50%;
+        cursor: pointer;
+    }
+
+    .register .nav-tabs {
+        margin-top: 3%;
+        border: none;
+        background: #0062cc;
+        border-radius: 1.5rem;
+        width: 28%;
+        float: right;
+    }
+
+        .register .nav-tabs .nav-link {
+            padding: 2%;
+            height: 34px;
+            font-weight: 600;
+            color: #fff;
+            border-top-right-radius: 1.5rem;
+            border-bottom-right-radius: 1.5rem;
+        }
+
+            .register .nav-tabs .nav-link:hover {
+                border: none;
+            }
+
+            .register .nav-tabs .nav-link.active {
+                width: 100px;
+                color: #0062cc;
+                border: 2px solid #0062cc;
+                border-top-left-radius: 1.5rem;
+                border-bottom-left-radius: 1.5rem;
+            }
+
+    .register-heading {
+        text-align: center;
+        margin-top: 8%;
+        margin-bottom: -15%;
+        color: #495057;
+    }
+</style>
+<div class="container register">
+    <div class="row">
+        <div class="col-md-9 register-right">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    @if (TempData["msg"] != null)
+                    {
+                        <label type="button" class="btn btn-success" value="Register">@TempData["msg"]</label>
+                    }
+                    <h3 style="color:white" class="register-heading">Exam Register</h3>
+                    <form action="Register" method="post">
+                        @Html.AntiForgeryToken()
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.CandidateName, new { htmlAttributes = new { @placeholder = "Candidate Name *", @class = "form-control", @id = "candidateName" } })
+                                </div>
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @placeholder = "Age *", @class = "form-control" } })
+                                </div>
+                                <div class="form-group">
+                                    <div style="display:flex">
+                                        @Html.LabelFor(model => model.BirthDay, new { @class = "control-label" })
+                                        <div>*</div>
+                                    </div>
+                                    @Html.EditorFor(model => model.BirthDay, new { htmlAttributes = new { @placeholder = "Birth Day *", @class = "form-control" } })
+                                </div>
+                                <div class="form-group">
+                                    <div class="maxl">
+                                        <label class="radio inline">
+                                            <input type="radio" name="gender" value="Male" checked>
+                                            <span> Male </span>
+                                        </label>
+                                        <label class="radio inline">
+                                            <input type="radio" name="gender" value="Female">
+                                            <span>Female </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.City, new { htmlAttributes = new { @placeholder = "City *", @class = "form-control" } })
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="password" type="password" placeholder="Password *" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @type = "email", @placeholder = "Email *", @class = "form-control" } })
+                                </div>
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @placeholder = "Phone number *", @class = "form-control" } })
+                                </div>
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.PlaceOfBirth, new { htmlAttributes = new { @placeholder = "Place of birth *", @class = "form-control" } })
+                                </div>
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.ResidentialAddress, new { htmlAttributes = new { @placeholder = "Residential address *", @class = "form-control" } })
+                                </div>
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @placeholder = "Country *", @class = "form-control" } })
+                                </div>
+                                <div class="form-group">
+                                    <div style="display:flex">
+                                        @Html.LabelFor(model => model.ExamID, new { @class = "control-label" })
+                                        <div>*</div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        @if (ViewBag.Items == null || ((IEnumerable<SelectListItem>)ViewBag.Items).Count() == 0)
+                                        {
+                                            @Html.DropDownListFor(model => model.ExamID, optionsNone, "No exam have been created yet", new { @class = "form-control" })
+                                        }
+                                        else
+                                        {
+                                            @Html.DropDownListFor(model => model.ExamID, ViewBag.Items as IEnumerable<SelectListItem>, "Select 1 item", new { @class = "form-control" })
+                                        }
+                                        @Html.ValidationMessageFor(model => model.ExamID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" class="btn btn-primary" value="Register" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

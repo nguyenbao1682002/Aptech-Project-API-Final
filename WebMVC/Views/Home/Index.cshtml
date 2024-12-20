@@ -1,0 +1,395 @@
+﻿@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="templateux-cover" style="background-image: url(@Url.Content("~/Admin/images/hero_1.jpg" ));">
+    <div class="container">
+        <div class="row align-items-lg-center">
+
+            <div class="col-lg-6 order-lg-1">
+                <h1 class="heading mb-3 text-white" data-aos="fade-up">We are your employer <strong>Human Resource</strong></h1>
+                <p class="lead mb-5 text-white" data-aos="fade-up" data-aos-delay="100">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            </div>
+
+        </div>
+    </div>
+</div> <!-- .templateux-cover -->
+
+<div class="templateux-section pt-0 pb-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 templateux-overlap">
+                <div class="row">
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+                        <div class="media block-icon-1 d-block text-left">
+                            <div class="icon mb-3">
+                                <img src="~/Admin/images/001-consultation.svg" alt="Image" class="img-fluid">
+                            </div>
+                            <div class="media-body">
+                                <h3 class="h5 mb-4">Take a test</h3>
+                                <p>The test helps us find new, enthusiastic and active employees.</p>
+                                <p><a href="@Url.Action("ExamDashBoard","Exam")">Join</a></p>
+                            </div>
+                        </div> <!-- .block-icon-1 -->
+                    </div>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="700">
+                        <div class="media block-icon-1 d-block text-left">
+                            <div class="icon mb-3">
+                                <img src="~/Admin/images/flaticon/svg/002-discussion.svg" alt="Image" class="img-fluid">
+                            </div>
+                            <div class="media-body">
+                                <h3 class="h5 mb-4">Exam registration</h3>
+                                <p>
+                                    The Aptitude Test is divided into three parts:
+                                    General Knowledge,
+                                    Math,
+                                    Computer Technology.
+                                </p>
+                                <p>
+                                    Good luck to you!
+                                </p>
+                                <p><a href="">Register</a></p>
+                            </div>
+                        </div> <!-- .block-icon-1 -->
+                    </div>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="800">
+                        <div class="media block-icon-1 d-block text-left">
+                            <div class="icon mb-3">
+                                <img src="~/Admin/images/flaticon/svg/003-turnover.svg" alt="Image" class="img-fluid">
+                            </div>
+                            <div class="media-body">
+                                <h3 class="h5 mb-4">Understand more clearly</h3>
+                                <p>
+                                    Each candidate will be provided with login information by the Manager.
+                                    Candidates will begin taking the test according to the schedule and time allocated for the test. They must follow linear mode and once the answer is submitted it can be changed.
+                                </p>
+                                <p><a href="@Url.Action("Index","ContactPage")">Contact</a></p>
+                            </div>
+                        </div> <!-- .block-icon-1 -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div> <!-- .templateux-section -->
+
+<div class="templateux-section">
+
+    <div class="container" data-aos="fade-up">
+        <div class="row">
+            <div class="col-lg-7">
+                <h2 class="mb-5">Our Agency</h2>
+                <div class="owl-carousel wide-slider">
+                    <div class="item">
+                        <img src="~/Admin/images/slider-1.jpg" alt="Free template by TemplateUX.com" class="img-fluid">
+                    </div>
+                    <div class="item">
+                        <img src="~/Admin/images/slider-2.jpg" alt="Free template by TemplateUX.com" class="img-fluid">
+                    </div>
+                    <div class="item">
+                        <img src="~/Admin/images/slider-3.jpg" alt="Free template by TemplateUX.com" class="img-fluid">
+                    </div>
+                </div> <!-- .owl-carousel -->
+            </div>
+            <div class="col-lg-5 pl-lg-5">
+                <h2 class="mb-5">Why Us?</h2>
+                <div class="accordion" id="accordionExample">
+
+
+                    <div class="accordion-item">
+                        <h2 class="mb-0 rounded mb-2">
+                            <a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Provident alias
+                            </a>
+                        </h2>
+
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>Lorem ipsum dolor sit amet, <a href="#">Cnsectetur adipisicing</a> elit. Eos quos incidunt, perspiciatis, ad saepe, magnam error adipisci vitae ut provident alias! Odio debitis error ipsum molestiae voluptas accusantium quibusdam animi, soluta explicabo asperiores aliquid, modi natus suscipit deleniti. Corrupti, autem.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="mb-0 rounded mb-2">
+                            <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Debitis ad similique tempore
+                            </a>
+                        </h2>
+
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat voluptate animi hic quasi sequi odio, vitae dolorum soluta sapiente debitis ad similique tempore, aliquam quae nam deserunt dicta ullam perspiciatis minima, quam. Quis repellat corporis aperiam, veritatis nemo iure inventore.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="mb-0 rounded mb-2">
+                            <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Lorem ipsum dolor sit amet
+                            </a>
+                        </h2>
+
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum et dolorum libero consequuntur facere molestias beatae quod labore quidem ad quasi eius pariatur quae nam quo soluta optio dicta, doloribus ullam fugit nulla! Itaque necessitatibus eum sed quam eos id!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="mb-0 rounded mb-2">
+                            <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Modi natus suscipit
+                            </a>
+                        </h2>
+
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos quos incidunt, perspiciatis, ad saepe, magnam error adipisci vitae ut provident alias! Odio debitis error ipsum molestiae voluptas accusantium quibusdam animi, soluta explicabo asperiores aliquid, modi natus suscipit deleniti. Corrupti, autem.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- .templateux-section -->
+
+<div class="templateux-section bg-light py-5" id="templateux-counter-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+                <div class="templateux-counter text-center">
+                    <span class="templateux-number" data-number="99399">0</span>
+                    <span class="templateux-label">Number of Clients</span>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="templateux-counter text-center">
+                    <span class="templateux-number" data-number="199">0</span>
+                    <span class="templateux-label">Number of Personnel</span>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="templateux-counter text-center">
+                    <span class="templateux-number" data-number="24">0</span>
+                    <span class="templateux-label">Years Of Experience</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div> <!-- .templateux-section -->
+
+<div class="templateux-section pb-0">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2>The Leadership</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-sm-6 col-md-6 col-lg-4">
+                <div class="staff staff-img" style="background-image: url(@Url.Content("~/Admin/images/images123.png"));">
+                    <a href="#" class="desc">
+                        <h3>General Knowledge</h3>
+                        <span>Exam 1</span>
+                        <div class="parag">
+                            <p>This exam helps ensure selected candidates have the skills and knowledge to adapt and succeed in the oil and gas industry.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-4">
+                <div class="staff staff-img" style="background-image: url(@Url.Content("~/Admin/images/maths.jpg"));">
+                    <a href="#" class="desc">
+                        <h3>Math</h3>
+                        <span>Exam 2</span>
+                        <div class="parag">
+                            <p>The Math test assesses the ability to solve problems and apply mathematical knowledge to real-life situations.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-4">
+                <div class="staff staff-img" style="background-image: url(@Url.Content("~/Admin/images/su-dung-cong-nghe-de-giao-duc.jpg"));">
+                    <a href="#" class="desc">
+                        <h3>Computer Technology</h3>
+                        <span>Exam 3</span>
+                        <div class="parag">
+                            <p>Strong knowledge of Computer Technology is important, including skills in system management, data analysis ,implementation of technology solutions.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="templateux-section">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2>Introduction to exam sections</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8 testimonial-wrap">
+                <div class="quote">&ldquo;</div>
+                <div class="owl-carousel wide-slider-testimonial">
+                    <div class="item">
+                        <blockquote class="block-testomonial">
+                            <p>The General Knowledge test in the oil and gas industry recruitment evaluates candidates' understanding and overall skills related to fundamental concepts in this field. This includes knowledge of the oil extraction process, understanding of safety and environmental considerations, as well as technical and technological factors. The test typically aims to assess the ability to apply general knowledge to problem-solving and demonstrates the candidate's readiness to grasp and work with diverse aspects of the oil and gas industry.</p>
+                            <p><cite>General Knowledge</cite></p>
+                        </blockquote>
+                    </div>
+
+                    <div class="item">
+                        <blockquote class="block-testomonial">
+                            <p>The mathematics test in the oil and gas industry recruitment is a crucial component designed to assess candidates' mathematical capabilities and skills, particularly their ability to apply mathematical concepts to solve complex problems within the industry. The test typically focuses on measuring the candidate's proficiency in analyzing numerical data, applying mathematical models, and addressing technical challenges related to oil extraction, processing, and resource management. Exceptional candidates in this test often demonstrate a strong ability to apply mathematical knowledge to real-world situations and exhibit logical thinking and in-depth analytical skills.</p>
+                            <p><cite>Math</cite></p>
+                        </blockquote>
+                    </div>
+
+                    <div class="item">
+                        <blockquote class="block-testomonial">
+                            <p>The Computer Technology test in the context of oil and gas industry recruitment assesses candidates' proficiency in computer-related knowledge and skills. This includes evaluating their understanding of hardware, software, networking, and the application of information technology. The test often focuses on the ability to manage systems, analyze data, and deploy technological solutions to optimize processes related to oil extraction and resource management. Successful candidates in this test typically showcase a solid understanding of applying computer technology to real-world situations and possess strong logical thinking and analytical skills.</p>
+                            <p><cite>Computer Technology</cite></p>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- .container -->
+</div> <!-- .templateux-section -->
+
+<div class="templateux-section bg-light">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 text-center mb-5">
+                <h2>Our Services</h2>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="fade-up">
+                <div class="media block-icon-1 d-block text-center">
+                    <div class="icon mb-3">
+                        <img src="~/Admin/images/flaticon/svg/004-gear.svg" alt="Image" class="img-fluid">
+                    </div>
+                    <div class="media-body">
+                        <h3 class="h5 mb-4">High-Quality Job Search</h3>
+                        <p>Provides a powerful search tool that allows candidates to easily identify and seize quality job opportunities within the oil and gas industry.</p>
+                    </div>
+                </div> <!-- .block-icon-1 -->
+            </div>
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="media block-icon-1 d-block text-center">
+                    <div class="icon mb-3">
+                        <img src="~/Admin/images/flaticon/svg/005-conflict.svg" alt="Image" class="img-fluid">
+                    </div>
+                    <div class="media-body">
+                        <h3 class="h5 mb-4">Detailed Company Information</h3>
+                        <p>Offers detailed information about companies operating in the industry, helping candidates understand the work environment, corporate culture, and development opportunities.</p>
+                    </div>
+                </div> <!-- .block-icon-1 -->
+            </div>
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="media block-icon-1 d-block text-center">
+                    <div class="icon mb-3">
+                        <img src="~/Admin/images/flaticon/svg/006-meeting.svg" alt="Image" class="img-fluid">
+                    </div>
+                    <div class="media-body">
+                        <h3 class="h5 mb-4">Industry Updates</h3>
+                        <p>Delivers daily news, articles, and newsletters about trends, new technologies, and significant events within the oil and gas sector.</p>
+                    </div>
+                </div> <!-- .block-icon-1 -->
+            </div>
+
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="media block-icon-1 d-block text-center">
+                    <div class="icon mb-3">
+                        <img src="~/Admin/images/flaticon/svg/007-brainstorming.svg" alt="Image" class="img-fluid">
+                    </div>
+                    <div class="media-body">
+                        <h3 class="h5 mb-4">Career Counseling Services</h3>
+                        <p>Supports candidates with career counseling services such as resume building, interview preparation, and career advice tailored to the industry.</p>
+                    </div>
+                </div> <!-- .block-icon-1 -->
+            </div>
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="media block-icon-1 d-block text-center">
+                    <div class="icon mb-3">
+                        <img src="~/Admin/images/001-consultation.svg" alt="Image" class="img-fluid">
+                    </div>
+                    <div class="media-body">
+                        <h3 class="h5 mb-4">Online CV Submission System</h3>
+                        <p>Provides a straightforward platform for candidates to submit their CVs and profiles online, making it easy for them to capture new job opportunities.</p>
+                    </div>
+                </div> <!-- .block-icon-1 -->
+            </div>
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="500">
+                <div class="media block-icon-1 d-block text-center">
+                    <div class="icon mb-3">
+                        <img src="~/Admin/images/flaticon/svg/009-brainstorming-2.svg" alt="Image" class="img-fluid">
+                    </div>
+                    <div class="media-body">
+                        <h3 class="h5 mb-4">Community and Networking</h3>
+                        <p>Establishes a community and network where candidates can connect, share experiences, and seek support from professionals working in the oil and gas industry.</p>
+                    </div>
+                </div> <!-- .block-icon-1 -->
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="col-md-12 text-center" data-aos="fade-up" data-aos-delay="100">
+                <p><a href="#" class="btn btn-black py-3 px-4">More Features</a></p>
+            </div>
+        </div>
+    </div>
+</div> <!-- .templateux-section -->
+
+<div class="container templateux-section">
+    <div class="row">
+        <div class="col-12 col-md-7 mx-auto text-center mb-5">
+            <h2>Our Partner</h2>
+            <p>Our oil and gas recruitment partners are leading enterprises in the industry, specializing in exploration, production, and resource management globally. We take pride in collaborating with reputable and reliable partners committed to providing a positive work environment and career development opportunities for our workforce.</p>
+        </div>
+    </div>
+    <div class="d-flex flex-sm-row">
+        <a href="#" class="block-thumbnail-1 one-third" style="background-image: url('@Url.Content("~/Admin/images/Gazprom2.jpeg")'); " data-aos="fade">
+            <div class="block-thumbnail-content">
+                <h2>Gazprom</h2>
+                <span class="post-meta">Gazprom is the largest Russian company. Gazprom is the world's largest natural gas refining company. With sales of US$31 billion in 2004, it accounts for about 93% of Russia's natural gas production; With reserves of 28,800 km³, the company currently manages 16% of the world's gas reserves (as of 2004[2], including the Shtokman field.)</span>
+            </div>
+        </a>
+        <a href="#" class="block-thumbnail-1 two-third" style="background-image: url('@Url.Content("~/Admin/images/exonnn.jpg")'); " data-aos="fade" data-aos-delay="100">
+            <div class="block-thumbnail-content">
+                <h2>Exxon Mobil</h2>
+                <span class="post-meta">Exxon Mobil is an American multinational petroleum corporation and the largest direct descendant of John D. Rockefeller's Standard Oil. The company, which took its current name in 1999 after the merger of Exxon and Mobil, is vertically integrated throughout the oil and gas industry and within it also has a chemicals division that produces plastics, synthetic rubber and other chemicals. other chemical products. ExxonMobil is headquartered near the Houston suburb of Spring, Texas, although officially incorporated in the US state of New Jersey.</span>
+            </div>
+        </a>
+    </div>
+    <div class="d-flex flex-column flex-sm-row">
+        <a href="#" class="block-thumbnail-1 two-third" style="background-image: url('@Url.Content("~/Admin/images/viewimage.jpg")'); " data-aos="fade" data-aos-delay="200">
+            <div class="block-thumbnail-content">
+                <h2>CNPC</h2>
+                <span class="post-meta">China National Petroleum Corporation (CNPC) is a major Chinese national oil and gas corporation and one of the world's largest integrated energy corporations. Its headquarters are in Dongcheng District, Beijing. CNPC is ranked fourth in the 2022 Fortune Global 500, a global ranking of the largest corporations by revenue.</span>
+            </div>
+        </a>
+        <a href="#" class="block-thumbnail-1 one-third" style="background-image: url('@Url.Content("~/Admin/images/trung.jpg")'); " data-aos="fade" data-aos-delay="300">
+            <div class="block-thumbnail-content">
+                <h2>Total</h2>
+                <span class="post-meta">
+                    TotalEnergies SE is a French multinational integrated oil and energy company founded in 1924 and one of the seven major oil companies. The company's businesses cover the entire oil and gas chain, from exploration and production of crude oil and natural gas to power generation, transportation, refining, petroleum products marketing as well as trading international crude oil and products. TotalEnergies is also a large-scale chemical manufacturer. TotalEnergies is headquartered at Tour Total in the La Défense district in Courbevoie, west of Paris. The company is a component of the Euro Stoxx 50 stock market index. In the 2023 Forbes Global 2000, TotalEnergies was ranked as the 21st largest public company in the world.
+                </span>
+            </div>
+        </a>
+    </div>
+</div> <!-- .templateux-section -->
+</div> <!-- .templateux-section -->

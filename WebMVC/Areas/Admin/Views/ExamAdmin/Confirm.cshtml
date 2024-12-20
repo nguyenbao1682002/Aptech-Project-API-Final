@@ -1,0 +1,31 @@
+﻿@model ObjectBussiness.Exam
+@{
+    ViewData["Title"] = "Confirm";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<style>
+    dd, dt {
+        color: black;
+    }
+</style>
+<div class="container-fluid py-4">
+
+    <h3>When updating the test status to "End", the test will be deleted</h3>
+    <div>
+        <form action="Confirm" method="post">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    Confirm Update?
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.EditorFor(model => model.ExamID, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                </dd>
+            </dl>
+            @Html.AntiForgeryToken()
+            <input type="submit" value="Accept" class="btn btn-danger" />
+            <a href="@Url.Action("")"> Cancel</a>
+        </form>
+    </div>
+</div>
+

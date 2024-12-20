@@ -1,0 +1,38 @@
+﻿@model ObjectBussiness.NewsCategory
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-md-4">
+
+            @using (Html.BeginForm("Edit", "NewsCategory", FormMethod.Post))
+            {
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    @Html.LabelFor(n => n.CategoryID)
+                    @Html.EditorFor(model => model.CategoryID, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                    <span asp-validation-for="CategoryID" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(n => n.CategoryName)
+                    @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
+                    <span asp-validation-for="CategoryName" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            }
+        </div>
+    </div>
+    <br />
+
+    <div>
+        @Html.ActionLink("Back To List", "Index", "NewsCategory", null, new { @class = "btn btn-danger" })
+    </div>
+</div>

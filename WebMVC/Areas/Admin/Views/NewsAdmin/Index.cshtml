@@ -1,0 +1,213 @@
+﻿﻿@using ObjectBussiness;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@model IEnumerable<ObjectBussiness.News>
+
+@{
+    ViewData["Title"] = "News";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="container-fluid py-4">
+
+    <p>
+        <a style="color:black;background-color:yellow" class="btn" href="~/Admin/NewsAdmin/Create">Create New</a>
+    </p>
+    <div class="text-align">
+        @if (TempData["AlertMessage"] != null)
+        {
+            <div id="AlertBox" class="alert @TempData["AlertType"]">
+
+                @TempData["AlertMessage"]
+            </div>
+        }
+    </div>
+    <br />
+
+    @using (Html.BeginForm("Index", "NewsAdmin", FormMethod.Get))
+    {
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header pb-0">
+                        <h6>News table</h6>
+                    </div>
+                    <div class="card-body px-0 pt-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            @Html.DisplayNameFor(model => model.NewsID)
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            @Html.DisplayNameFor(model => model.Title)
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            @Html.DisplayNameFor(model => model.ShortContents)
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            @Html.DisplayNameFor(model => model.Picture)
+
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            @Html.DisplayNameFor(model => model.DateSubmitted)
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            @Html.DisplayNameFor(model => model.CategoryName)
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            @Html.DisplayNameFor(model => model.Account)
+                                        </th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">@Html.DisplayFor(modelItem => item.NewsID)</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">@Html.DisplayFor(modelItem => item.Title)</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">@Html.DisplayFor(modelItem => item.ShortContents)</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <img class="img-fluid" src="~/images/@item.Picture" style="object-fit:cover; height:50px; width:50px">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">@Convert.ToDateTime(item.DateSubmitted).ToString("dd/MM/yyyy")</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">
+                                                            @Html.DisplayFor(modelItem => item.CategoryName)
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">@Html.DisplayFor(modelItem => item.AccountName)</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <button type="button" class="btn btn-success">@Html.ActionLink("Update", "Edit", new { id = item.NewsID })</button>&nbsp;
+                                                    <a href="#" class="delete-link btn btn-danger" data-id="@item.NewsID" data-confirm="Do you really want to delete it?" data-toggle="modal" data-target="#confirmModal">Delete</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmModalLabel">Confirm Delete</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p id="confirmMessage"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page = page, SearchString = @Context.Request.Query["SearchString"] }),
+    new X.PagedList.Web.Common.PagedListRenderOptions
+    {
+    LiElementClasses = new string[] { "page-item" },
+    PageClasses = new string[] { "page-link" }
+    })
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+        function DisplayProgressMessage(ctl, msg) {
+            //if use the submit button, you can use event.preventDefault to prevent the default submit form behavior.
+            event.preventDefault();
+            // Turn off the "Save" button and change text
+            $(ctl).prop("disabled", true).val(msg);
+            // Gray out background on page
+            $("body").addClass("submit-progress-bg");
+            // Wrap in setTimeout so the UI can update the spinners
+            $(".processing-preview").removeClass("hidden");
+            //submit the form.
+            setTimeout(function () {
+                $("form").submit();
+            }, 3000);
+            return true;
+        }
+
+        //Delete popup
+        $(document).on("click", ".delete-link", function (e) {
+            e.preventDefault();
+            var id = $(this).data("id");
+            var confirmMessage = $(this).data("confirm");
+
+            $("#confirmMessage").text(confirmMessage);
+            $("#confirmDelete").data("id", id);
+
+            $("#confirmModal").modal("show");
+        });
+
+        $(document).on("click", "#confirmDelete", function (e) {
+            e.preventDefault();
+            var id = $(this).data("id");
+            $.ajax({
+                url: "/Admin/NewsAdmin/DeleteId/" + id,
+                dataType: "json",
+                type: "POST",
+                contentType: "application/json;charset=UTF-8",
+                success: function (res) {
+                    if (res.status == true) {
+                        window.location.href = '/Admin/NewsAdmin';
+                    }
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+            //}
+        });
+
+    </script>
+}

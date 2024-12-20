@@ -1,0 +1,161 @@
+﻿@{
+    ViewData["Title"] = "Contact Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body>
+
+    <div class="js-animsition animsition" id="site-wrap" data-animsition-in-class="fade-in" data-animsition-out-class="fade-out">
+
+        <div class="templateux-cover" style="background-image: url(@Url.Content("~/Admin/images/slider-1.jpg"))">
+            <div class="container">
+                <div class="row align-items-lg-center">
+
+                    <div class="col-lg-6 order-lg-1 text-center mx-auto">
+                        <h1 class="heading mb-3 text-white" data-aos="fade-up">Contact us</h1>
+                        <p class="lead mb-5 text-white" data-aos="fade-up" data-aos-delay="100">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                        <p data-aos="fade-up" data-aos-delay="200"><a href="#" class="btn btn-primary py-3 px-4 mr-3">Get Started</a> <a href="#" class="text-white">Learn More</a></p>
+                    </div>
+
+                </div>
+            </div>
+        </div> <!-- .templateux-cover -->
+
+        <div class="templateux-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md-7 pr-md-7 mb-5">
+                        <form id="form" action="#" method="post" onsubmit="return validateForm()">
+                            <div class="form-group">
+                                <label for="to_name">To Name</label>
+                                <input type="text" placeholder="Name" class="form-control" name="to_name" id="to_name">
+                                <div class="error" id="to_name_error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="from_name">From Name</label>
+                                <input type="text" placeholder="From Name" class="form-control" name="from_name" id="from_name">
+                                <div class="error" id="from_name_error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email_id">Email</label>
+                                <input type="email" placeholder="Email" class="form-control" name="email_id" id="email_id">
+                                <div class="error" id="email_id_error"></div>
+                            </div>                         
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea name="message" id="message" placeholder="Message" cols="30" rows="10" class="form-control"></textarea>
+                                <div class="error" id="message_error"></div>
+                            </div>
+                            <div class="form-group">
+                                <input class="btn btn-primary py-3 px-5" type="submit" id="button" value="Send Email">                               
+                            </div>
+                        </form>
+                        
+                    </div>                
+                    <div class="col-md-5">
+                        <div class="media block-icon-1 d-block text-center">
+                            <div class="icon mb-3"><span class="ion-ios-location-outline"></span></div>
+                            <div class="media-body">
+                                <h3 class="h5 mb-4">Arthur Bldg flr, New York City, USA</h3>
+                            </div>
+                        </div> <!-- .block-icon-1 -->
+
+                        <div class="media block-icon-1 d-block text-center">
+                            <div class="icon mb-3"><span class="ion-ios-telephone-outline"></span></div>
+                            <div class="media-body">
+                                <h3 class="h5 mb-4">+84 209 923 ***</h3>
+                            </div>
+                        </div> <!-- .block-icon-1 -->
+
+                        <div class="media block-icon-1 d-block text-center">
+                            <div class="icon mb-3"><span class="ion-ios-email-outline"></span></div>
+                            <div class="media-body">
+                                <h3 class="h5 mb-4">contactfcore@gmail.com</h3>
+                            </div>
+                        </div> <!-- .block-icon-1 -->
+
+                    </div>
+                </div> <!-- .row -->
+
+            </div>
+        </div> <!-- .templateux-section -->
+
+    </div> <!-- .js-animsition -->
+    <!-- Show Modal Send Mail -->
+    <div id="myModal" class="modal-email">
+        <div class="modal-email-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p id="modal-email-text"></p>
+        </div>
+    </div>
+    
+</body>
+
+
+
+    @Html.Raw("<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js'></script>")
+
+<script type="text/javascript">
+    emailjs.init('QPgSeLTkwQdYRca0Y')
+</script>
+    @*Send gmail*@
+    <script>
+    const btn = document.getElementById('button');
+    const modal = document.getElementById('myModal');
+    const modalText = document.getElementById('modal-email-text');
+
+    document.getElementById('form').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const toName = document.getElementById('to_name').value;
+        const fromName = document.getElementById('from_name').value;
+        const emailId = document.getElementById('email_id').value;
+        const message = document.getElementById('message').value;
+
+        displayError('to_name', toName === '');
+        displayError('from_name', fromName === '');
+        displayError('email_id', emailId === '');
+        displayError('message', message === '');
+
+        const errors = document.querySelectorAll('.error');
+        const hasErrors = Array.from(errors).some(error => error.innerText !== '');
+
+        if (hasErrors) {
+            return;
+        }
+
+        btn.value = 'Sending email...';
+
+        const serviceID = 'service_qrhisj7';
+        const templateID = 'template_nn1mpx9';
+
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                btn.value = 'Send mail';
+                showModal('We have received your request !');
+            })
+            .catch((err) => {
+                btn.value = 'Send Email';
+                showModal(JSON.stringify(err));
+            });
+    });
+    function displayError(field, isError) {
+        const errorElement = document.getElementById(`${field}_error`);
+        errorElement.innerText = isError ? 'Please enter complete information!' : '';
+    }
+
+    function showModal(text) {
+        modalText.innerText = text;
+        modal.style.display = 'block';
+    }
+
+    function closeModal() {
+        modal.style.display = 'none';
+    }
+    modal.querySelector('.close').addEventListener('click', closeModal);
+
+    window.addEventListener('click', function (event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    });
+    </script>
